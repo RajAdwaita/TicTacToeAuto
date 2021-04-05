@@ -4,6 +4,10 @@
   box-sizing: border-box;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+/* ::selection{
+  color:aliceblue
+  background :rgb(95, 238, 159);
+} */
 
 body {
   background: rgb(95, 238, 159);
@@ -16,18 +20,20 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
 }
 .select-box {
-  position: absolute;
-  margin-top: 335px;
-  margin-left: 350px;
-  transform: translate(-50%, -50%);
   background: white;
   border-radius: 10px;
   max-width: 340px;
   padding: 20px 29px 25px;
   width: 100%;
-  display: none;
+  /* transition: all 0.3s ease; */
+}
+.select-box.hide {
+  opacity: 0;
+  pointer-events: none;
+  /* transform: translate(-50%, -50%) scale(0.9); */
 }
 
 .select-box header {
@@ -63,53 +69,96 @@ body {
 }
 
 .options button:hover,
-.result-box .btn button:hover {
+.btn button:hover {
   transform: scale(0.97);
 }
 
-.options .player1 {
+.options button.playerX {
   margin-right: 6px;
 }
 
-.options .player2 {
+.options button.playerO {
   margin-left: 6px;
 }
 
+.select-box .credit {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.select-box .credit a {
+  color: rgb(95, 238, 159);
+  text-decoration: none;
+}
+.select-box .credit a:hover {
+  text-decoration: underline;
+}
+
 .play-board {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.play-board.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .play-board .details {
   background: whitesmoke;
-  padding: 15px;
+  padding: 10px;
   border-radius: 8px;
 }
 
-.play-board .details .players {
+.play-board .players {
   display: flex;
   width: 100%;
   position: relative;
   justify-content: space-between;
 }
 
-.play-board .details span {
+/* .players span {
+  position: relative;
+  z-index: 2;
+  color: #56baed;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+  transition: all 0.3 ease;
+} */
+
+.players span {
   width: 100%;
   color: rgb(95, 238, 159);
-  padding: 10px;
+  padding: 10px 0;
   border-radius: 9px;
   font-size: 17px;
   font-weight: 600;
   text-align: center;
   cursor: default;
   position: relative;
-  z-index: 5;
+  z-index: 3;
+  transition: all 0.3s ease;
+  user-select: none;
 }
 
-.details span:first-child {
+.players.active span:first-child {
+  color: aliceblue;
+}
+.players.active span:last-child {
+  color: rgb(95, 238, 159);
+}
+.players span:first-child {
   color: aliceblue;
 }
 
-.details .slider {
+.players .slider {
   position: absolute;
 
   top: 0;
@@ -119,16 +168,40 @@ body {
   background: rgb(95, 238, 159);
 
   border-radius: 8px;
-  z-index: 2;
+  /* z-index: 2; */
+  transition: all 0.3s ease;
 }
-.play-board section {
+.players.active .slider {
+  left: 50%;
+}
+.players.active span:first-child {
+  color: rgb(95, 238, 159);
+}
+
+.players.active span:nth-child(2) {
+  color: aliceblue;
+}
+
+.players.active .slider {
+  left: 50%;
+}
+
+/* .play-board .play-area {
+  margin-top: 25px;
+} */
+.play-area {
+  margin-top: 25px;
+}
+
+.play-area section {
   display: flex;
+  margin-bottom: 2px;
 }
-.play-board section span {
+.play-area section span {
   display: block;
   margin: 2px;
   height: 90px;
-  /* margin: 3px; */
+
   width: 100px;
   background-color: aliceblue;
   font-size: 45px;
@@ -137,17 +210,23 @@ body {
   color: rgb(95, 238, 159);
 }
 
-.play-board .play-area {
-  margin-top: 25px;
-}
-
 .result-box {
   background: whitesmoke;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 15px;
-  max-width: 250px;
+  max-width: 390px;
   width: 100%;
   display: none;
+  opacity: 0;
+  text-align: center;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.result-box.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .result-box .won-text {
@@ -167,9 +246,10 @@ body {
   display: flex;
   margin-top: 25px;
   justify-content: center;
+  width: 100%;
 }
 
-.result-box .btn button {
+.btn button {
   width: 100%;
   font-size: 26px;
   font-weight: 600;
