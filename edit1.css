@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  background: rgb(95, 238, 159);
+}
+
+.select-box,
+.play-board,
+.result-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.select-box {
+  position: absolute;
+  margin-top: 335px;
+  margin-left: 350px;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  max-width: 340px;
+  padding: 20px 29px 25px;
+  width: 100%;
+  display: none;
+}
+
+.select-box header {
+  font-size: 29px;
+  font-weight: 800;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted indigo;
+}
+
+.select-box .title {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.select-box .options {
+  display: flex;
+  width: 100%;
+}
+
+.options button {
+  width: 100%;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 10px 0;
+  border: none;
+  outline: none;
+  background-color: rgb(95, 238, 159);
+  border-radius: 15px;
+  cursor: pointer;
+  color: aliceblue;
+  transition: all 0.3s ease;
+}
+
+.options button:hover,
+.result-box .btn button:hover {
+  transform: scale(0.97);
+}
+
+.options .player1 {
+  margin-right: 6px;
+}
+
+.options .player2 {
+  margin-left: 6px;
+}
+
+.play-board {
+  display: none;
+}
+
+.play-board .details {
+  background: whitesmoke;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.play-board .details .players {
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: space-between;
+}
+
+.play-board .details span {
+  width: 100%;
+  color: rgb(95, 238, 159);
+  padding: 10px;
+  border-radius: 9px;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  cursor: default;
+  position: relative;
+  z-index: 5;
+}
+
+.details span:first-child {
+  color: aliceblue;
+}
+
+.details .slider {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: rgb(95, 238, 159);
+
+  border-radius: 8px;
+  z-index: 2;
+}
+.play-board section {
+  display: flex;
+}
+.play-board section span {
+  display: block;
+  margin: 2px;
+  height: 90px;
+  /* margin: 3px; */
+  width: 100px;
+  background-color: aliceblue;
+  font-size: 45px;
+  text-align: center;
+  line-height: 68px;
+  color: rgb(95, 238, 159);
+}
+
+.play-board .play-area {
+  margin-top: 25px;
+}
+
+.result-box {
+  background: whitesmoke;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 250px;
+  width: 100%;
+  display: none;
+}
+
+.result-box .won-text {
+  font-size: 30px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+}
+
+.result-box .won-text p {
+  font-weight: 600;
+  margin: 0 8px;
+}
+
+.result-box .btn {
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.result-box .btn button {
+  width: 100%;
+  font-size: 26px;
+  font-weight: 600;
+  padding: 11px 450;
+  border: none;
+  outline: none;
+  background-color: rgb(95, 238, 159);
+  border-radius: 15px;
+  cursor: pointer;
+  color: aliceblue;
+  transition: all 0.3s ease;
+}
